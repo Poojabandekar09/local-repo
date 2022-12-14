@@ -1,0 +1,117 @@
+1)Get all Employee details from the Employee table?
+ select*from employee
+2)Get EmployeeId, FirstName, LastName from Employee table?
+  select emp_id,first_name,last_name from employee
+3)Get FirstName from Employee table using alias name "Employee Name" 
+  select first_name as "Employee Name" from employee
+4)Get FirstName from Employee table in upper case?
+  select upper(first_name) from employee
+5)Get FirstName from Employee table in lower case?
+  select lower(first_name) from employee
+6)Get unique Department from Employee table?
+  select DISTINCT department from employee
+7)Select first 3 characters of FirstName from Employee table.
+  select top 3* from employee
+8)Get position of 'k' in name 'Vikas' from Employee table
+  select charindex('k','vikas') from employee
+9)Get FirstName from Employee table after removing white spaces from right side?
+  select Rtrim(first_name) as right_space from employee
+10)Get FirstName from Employee table after removing white spaces from left side?
+   select Ltrim(first_name) as left_space from employee
+11)Get length of FirstName from Employee table?
+   select len(first_name) from employee
+12)Get FirstName from Employee table after replacing 'V' with 'VV'
+   select replace(first_name, 'v','w') from employee
+13)Get FirstName and LastName as single column from Employee table separated by 
+  select CONCAT(first_name,'',last_name) as combine_name from employee
+14)Get FirstName , Joining year, Joining Month and Joining Date from Employee table ?
+   select first_name,year(joining_date) as join_year,month(joining_date) as join_month,day(joining_date) as join_day from employee
+15)Get all employee details from the Employee table order by FirstName Ascending?
+   select*from employee order by first_name
+16)Get all employee details from the Employee table order by FirstName descending?
+      select*from employee order by first_name desc
+17)Get all employee details from the Employee table order by FirstName Ascending and Salary descending?
+   select *from employee order by first_name asc,salary desc
+18)Get employee details from Employee table whose employee name is "Vikas"?
+    select *from employee where first_name='vikas'
+19)Get employee details from Employee table whose employee name are "Vikas" and "Lalit"?
+    select*from employee where first_name in('vikas','lalit')
+20)Get employee details from Employee table whose employee name are not "Vikas" and "Lalit"?
+    select*from employee where first_name not in('vikas','lalit')
+21)Get employee details from Employee table whose FirstName starts with 'V'
+   select *from employee where first_name like 'v%'
+22)Get employee details from Employee table whose FirstName contains 'k'
+   select*from employee where first_name like '%k%' 
+23)Get employee details from Employee table whose FirstName ends with 's'
+   select*from employee where first_name like '%s'
+24)Get employee details from Employee table whose Salary is greater than 70000?
+    select*from employee where salary>70000
+25)Get employee details from Employee table whose Salary is less than 70000?
+        select*from employee where salary<70000
+26) Get employee details from Employee table whose Salary is between 50000 and 70000?
+   select*from employee where salary between 50000 and 70000
+27)Get employee details from Employee table whose joining year is "2015"?
+   select*from employee where year(joining_date)=2015
+28)Get employee details from Employee table whose joining month is "February"?
+    select*from employee where month(joining_date)=2
+29)Get employee details from Employee table who joined before 20th June, 2015?
+    select*from employee where joining_date<'2015-06-20'
+30)Get employee details from Employee table who joined before 20th June, 2015?
+       select*from employee where joining_date<'2015-06-20'
+31)Get FirstName, JoiningDate and IncentiveDate from Employee and Incentives table?
+    select e.first_name,e.joining_date,b.incentive_date from employee e inner join incentives b on e.emp_id=b.empre_id
+32)Get Last Name from Employee table after replacing special character (e.g. % (if any)) with white space?
+   select replace (last_name, '%','')from employee
+33)Get department, total salary with respect to a department from Employee table?
+   select department,sum(salary)as sum_salary from employee group by department
+34)Get Department, TotalSalary with respect to a department from Employee table order by total salary descending?
+    select department,sum(salary) as sum_salary from employee group by department order by sum_salary department
+36)Get department wise average salary from employee table order by salary ascending?
+    select avg(salary) as avg_sal from employee group by department order by avg_sal
+37)Get department wise maximum salary from Employee table order by salary ascending?
+    select max(salary) as max_sal from employee group by department order by max_sal
+38)Get department wise minimum salary from Employee table order by salary ascending?
+       select min(salary) as min_sal from employee group by department order by min_sal
+40)Select department,  salary with respect to a department from Employee table where  salary greater than 60000 order by Salary descending
+   select department,sum(salary)as sum_salary from employee where salary>60000 group by department order by sum_salary desc
+43)Select First Name, incentive amount from Employee and Incentives table for all Employees even if they didn't get incentives?
+    select first_name,incentive_amount from employee left join incentives on employee.emp_id=incentives.empre_id
+45) Select First Name, incentive amount from Employee and incentives table for all Employees who got incentives using right join?
+        select first_name,incentive_amount from employee right join incentives on employee.emp_id=incentives.empre_id
+47)  Select TOP 2 salary from Employee table?
+     select top 2*from employee
+49)  Select FirstName, Last Name from Employee table as separate rows?
+     select first_name from employee
+	 union
+	 select last_name from employee
+50)  What is the difference between UNION and UNION ALL?
+             union                                unionall
+       1)it removes duplicate rows             1)it does not remove duplicate rows
+       2)union perform distinct sort           2)it is does not remove duplicate and 
+         to remove duplicate                     also not perform any sort
+       3)slower than unionall                  3)faster than union
+52)  Get Employee Id's of those employees who didn't receive incentives without using sub query?
+      select employeeid from employee
+      except
+      select employeeRefid from incentives
+54) Select Banking as 'Bank Dept', Insurance as 'Insurance Dept' and Services as 'Services Dept' from employee table?
+   select department,
+   case
+    when department='insurance' then'insurance dept'
+    when department='banking' then'bank dept'
+    when department='service' then 'services dept'
+    end department
+    from employee
+  
+
+
+
+
+
+     
+
+
+
+    
+
+
