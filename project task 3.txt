@@ -1,0 +1,17 @@
+select*from records
+
+create table HRA1(employeenumber int,age float,education float,department nvarchar(255))
+
+MERGE into HRA1 AS TARGET
+USING records AS SOURCE
+on TARGET.employeenumber=SOURCE.employeenumber
+
+
+WHEN MATCHED THEN
+     UPDATE SET TARGET.age=SOURCE.age
+	 WHEN NOT MATCHED by target then
+  INSERT (AGE,DEPARTMENT,employeenumber,education) values(SOURCE.AGE, SOURCE.DEPARTMENT,SOURCE.employeenumber,SOURCE.EDUCATION)
+    WHEN NOT MATCHED by SOURCE then
+    Delete;
+
+select*from HRA1
